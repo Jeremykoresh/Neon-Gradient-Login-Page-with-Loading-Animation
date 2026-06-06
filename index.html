@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login Page</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #635c5c, #212124);
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-box {
+     background: linear-gradient(270deg, #ff00ff, #00ffff, #00ff00, #ffff00, #ff00ff);
+     background-size: 400% 400%;
+     animation: neonShift 8s ease infinite;
+
+     padding: 40px;
+     border-radius: 12px;
+     box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff, 0 0 60px #00ff00, 0 0 80px #ffff00;
+     text-align: center;
+     width: 250px;
+     transition: all 0.5s ease;
+     }
+
+     @keyframes neonShift {
+     0% {
+     background-position: 0% 50%;
+     }
+     50% {
+     background-position: 100% 50%;
+     }
+     100% {
+    background-position: 0% 50%;
+       }
+     }
+
+
+    .login-box h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .login-box input {
+      width: 92%;
+      padding: 12px 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .login-box button {
+      background: #74ebd5;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+      transition: background 0.3s;
+    }
+    .login-box button:hover {
+      background: #4dd0e1;
+    }
+    .spinner {
+      display: none;
+      margin: 20px auto;
+      border: 4px solid #ccc;
+      border-top: 4px solid #74ebd5;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+
+    .success-message {
+      display: none;
+      font-size: 20px;
+      font-weight: bold;
+      color: #4caf50;
+      margin-top: 20px;
+    }
+    .zoom-out {
+      animation: zoomOut 0.8s ease forwards;
+    }
+    @keyframes zoomOut {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.8);
+        opacity: 0.7;
+      }
+    }
+    .success-appear {
+      animation: appear 1s ease forwards;
+    }
+    @keyframes appear {
+      from {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="login-box" id="loginBox">
+  <h2>Login</h2>
+  <input type="text" id="username" placeholder="Username">
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+  <div class="spinner" id="spinner"></div>
+  <div class="success-message" id="successMessage">Login Successful!</div>
+</div>
+<script>
+  function login() {
+    var username = document.getElementById("username").value.trim();
+    var password = document.getElementById("password").value.trim();
+    var spinner = document.getElementById("spinner");
+    var loginBox = document.getElementById("loginBox");
+    var successMessage = document.getElementById("successMessage");
+
+    if (username === "" || password === "") {
+      alert("Please enter both username and password!");
+      return;
+    }
+    spinner.style.display = "block";
+    setTimeout(() => {
+      spinner.style.display = "none";
+      loginBox.classList.add("zoom-out");
+      setTimeout(() => {
+        loginBox.innerHTML = `<h2>Welcome, ${username}!</h2>
+        <div class="success-message success-appear" style="display:block;">Login Successful!</div>`;
+      }, 800);
+    }, 1500);
+  }
+</script>
+</body>
+</html>
