@@ -15,8 +15,6 @@ Built using HTML, CSS, and JavaScript for practicing modern front-end design and
 ---
 
 ## 🖥️ Preview
-Add a screenshot or demo of your project here:
-
 ![Preview](preview.png)
 
 ---
