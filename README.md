@@ -23,7 +23,3 @@ Built using HTML, CSS, and JavaScript for practicing modern front-end design and
 - HTML5
 - CSS3 (Neon effects + gradients)
 - JavaScript (Animation control)
-
----
-
-## 📂 Project Structure
